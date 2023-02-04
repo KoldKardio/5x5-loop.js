@@ -21,7 +21,7 @@ const SQUARES = Array.from(document.querySelectorAll('.grid div'))
 // console.log(SQUARES)
 
 // character / player
-var charIndex = 22
+var charIndex = 12
 
 // draw() && erase() func
 function draw() {
@@ -39,10 +39,10 @@ function move(e) {
     erase() // to remove so that we can redraw character
     //
     switch(e.key) {
-        case 'ArrowLeft':
+        case "ArrowLeft":
             if (charIndex % width !== 0) { charIndex -=1 }
             break
-        case 'ArrowRight':
+        case "ArrowRight":
             if (charIndex % width < width-1) { charIndex +=1 }
             break
     }
@@ -51,3 +51,10 @@ function move(e) {
 }
 
 document.addEventListener('keydown', move)
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+      console.log(event)
+    },
+  );
