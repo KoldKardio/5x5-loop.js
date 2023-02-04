@@ -13,7 +13,6 @@ body {
 }
 .grid div {
     width: 58px; height: 58px; 
-    /* border: 1px solid #d47500; */
     border: 1px solid whitesmoke;
 }
 .char {

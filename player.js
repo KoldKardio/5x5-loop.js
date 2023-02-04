@@ -1,4 +1,3 @@
-// console.log("Hello world!")
 
 // class selector
 const GRID = document.querySelector('.grid')
@@ -6,6 +5,7 @@ const GRID = document.querySelector('.grid')
 // console.log(GRID)
 
 // variables
+var width = 5
 var isMovingRight = true
 var direction = 1
 
@@ -21,7 +21,7 @@ const SQUARES = Array.from(document.querySelectorAll('.grid div'))
 // console.log(SQUARES)
 
 // character / player
-var charIndex = 0
+var charIndex = 22
 
 // draw() && erase() func
 function draw() {
@@ -34,28 +34,20 @@ function erase() {
 draw() // function call to draw character
 
 // animation func
-function animate() {
+function move(e) {
     //
+    erase() // to remove so that we can redraw character
     //
-    erase()
-    //
-    // check and move condition
-    if (isMovingRight && direction) {
-        charIndex += 1
+    switch(e.key) {
+        case 'ArrowLeft':
+            if (charIndex % width !== 0) { charIndex -=1 }
+            break
+        case 'ArrowRight':
+            if (charIndex % width < width-1) { charIndex +=1 }
+            break
     }
-    // check for reset
-    if (charIndex == 25) {
-        reset()
-    }
     //
-    console.log(charIndex)
-    //
-    draw()
+    draw() // to draw character
 }
 
-setInterval(animate, 500)
-
-// reset func
-function reset() {
-    charIndex = 0
-}
+document.addEventListener('keydown', move)
